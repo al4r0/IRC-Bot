@@ -1,5 +1,6 @@
 #Programado por v4char
 import socket
+import time
 
 servidor = "servidor irc"
 canal = "#canal"

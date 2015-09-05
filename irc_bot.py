@@ -14,7 +14,6 @@ def respuesta_ping(ircmsg,canal):
         respuesta_ping = respuesta_ping+"\n\r"
         irc.send(respuesta_ping)
         unirse_a_canal(canal)
-        
 
 def enviar_mensaje(canal , msg):
     irc.send("PRIVMSG "+ canal +" :"+ msg +"\n\r") 
@@ -28,7 +27,6 @@ irc.send("USER "+ nombre +" "+ nombre +" "+ nombre +" :Bot by v4char\n\r")
 irc.send("NICK "+ nombre +"\n\r")
 
 
-
 while 1:
     ircmsg = irc.recv(1024)
     ircmsg = ircmsg.strip('\n\r')
@@ -37,8 +35,4 @@ while 1:
     respuesta_ping(ircmsg,canal)
     
     if ircmsg.find("palabra clave") != -1:
-        enviar_mensaje(canal, "No digas la palabra clave")
- 
-  
-  
-    
+	enviar_mensaje(canal, "No digas la palabra clave")

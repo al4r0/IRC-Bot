@@ -38,9 +38,9 @@ while 1:
       if ircmsg.find("palabra clave") != -1:
             enviar_mensaje(canal, "No digas la palabra clave")
       
-       if(ircmsg.find("PRIVMSG") != -1):
-        nick = ircmsg.split('!', 1 )
-        nick = nick[0].replace(":", "",1)
-        mensaje = ircmsg.split(canal+' ', 1 )
-        mensaje = mensaje[1].replace(":", "",1)
-        print nick+": "+mensaje 
+      if(ircmsg.find("PRIVMSG") != -1):
+            nick = ircmsg.split('!', 1 )
+            nick = nick[0].replace(":", "",1)
+            mensaje = ircmsg.split(canal+' ', 1 )
+            mensaje = mensaje[1].replace(":", "",1)
+            print nick+": "+mensaje 

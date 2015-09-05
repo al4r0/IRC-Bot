@@ -47,7 +47,7 @@ time.sleep(6)
 unirse_a_canal(canal)
 
 while 1:
-      ircmsg = irc.recv(1024)
+      ircmsg = irc.recv(512)
       ircmsg = ircmsg.strip('\n\r')
       
       if ircmsg.find("PRIVMSG "+canal) != -1:

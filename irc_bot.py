@@ -22,6 +22,7 @@ def respuesta_ping(ircmsg, canal):
             respuesta_ping = entre(respuesta_ping, "PING :","\r\n:")
             respuesta_ping = "PONG :"+respuesta_ping+"\r\n"
             irc.send(respuesta_ping)
+            print respuesta_ping
             unirse_a_canal(canal)
         
 def enviar_mensaje(canal , msg):

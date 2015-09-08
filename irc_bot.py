@@ -1,33 +1,27 @@
 #Programado por v4char
+
 import socket
 import time
 
 servidor = "servidor_irc"
 canal = "#canal"
-nombre = "v4charbot"
+nombre = "nombre_del_bot"
 puerto = 6667
-
-def entre(texto, inicio, final):
-      pos_a = texto.find(inicio)
-      if pos_a == -1: return ""
-      pos_b = texto.rfind(final,1)
-      if pos_b == -1: return ""
-      pos_a = pos_a + len(inicio)
-      if pos_a >= pos_b: return ""
-      return texto[pos_a:pos_b]
 
 def respuesta_ping(ircmsg, canal):
       if ircmsg.find("PING :") != -1:
             respuesta_ping = ircmsg
-            respuesta_ping = entre(respuesta_ping, "PING :","\r\n:")
-            respuesta_ping = "PONG :"+respuesta_ping+"\r\n"
+            respuesta_ping = respuesta_ping[respuesta_ping.find("PING :"):]
+            respuesta_ping = respuesta_ping.split("\n", 1 )
+            respuesta_ping = respuesta_ping[0].replace("I", "O", 1)
             irc.send(respuesta_ping)
-            print respuesta_ping
             unirse_a_canal(canal)
+            print respuesta_ping
+            print "\n\r"
         
 def enviar_mensaje(canal , msg):
       irc.send("PRIVMSG "+ canal +" :"+ msg +"\n\r") 
-    
+      
 def unirse_a_canal(canal):
       irc.send("JOIN "+ canal +"\n\r")
       
@@ -36,12 +30,14 @@ def  obtener_nick(canal, ircmsg):
             nick = ircmsg.split('!', 1 )
             nick = nick[0].replace(":", "",1)
             return nick
-
+      
+      
 def obtener_mensaje(canal, ircmsg):
       if ircmsg.find("PRIVMSG "+canal) != -1:
             mensaje = ircmsg.split(canal+' ', 1 )
             mensaje = mensaje[1].replace(":", "",1)
             return mensaje
+
 
 def mostrar_chat(ircmsg, canal):
       print (obtener_nick(canal, ircmsg)+": "+obtener_mensaje(canal, ircmsg))

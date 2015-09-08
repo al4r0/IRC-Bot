@@ -34,12 +34,14 @@ def  obtener_nick(canal, ircmsg):
       if ircmsg.find("PRIVMSG "+canal) != -1:
             nick = ircmsg.split('!', 1 )
             nick = nick[0].replace(":", "",1)
+            print nick
             return nick
 
 def obtener_mensaje(canal, ircmsg):
       if ircmsg.find("PRIVMSG "+canal) != -1:
             mensaje = ircmsg.split(canal+' ', 1 )
             mensaje = mensaje[1].replace(":", "",1)
+            print mensaje
             return mensaje
 
 def mostrar_chat(ircmsg, canal):
@@ -59,7 +61,8 @@ while 1:
       ircmsg = irc.recv(512)
       ircmsg = ircmsg.strip('\n\r')
       
-      mostrar_chat(ircmsg, canal)
+      obtener_nick(canal, ircmsg)
+      obtener_mensaje(canal, ircmsg)
             
       if ((ircmsg.find("PRIVMSG") != -1) != 1):
             respuesta_ping(ircmsg,canal)

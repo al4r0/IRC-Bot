@@ -2,7 +2,7 @@
 import socket
 import time
 
-servidor = "servidor irc"
+servidor = "servidor_irc"
 canal = "#canal"
 nombre = "v4charbot"
 puerto = 6667
@@ -60,9 +60,9 @@ while 1:
       ircmsg = ircmsg.strip('\n\r')
       
       if ircmsg.find("PRIVMSG "+canal) != -1:
-            mostrar_chat(ircmsg, canal)
+            print(mostrar_chat(ircmsg, canal))
             
-      if (!(ircmsg.find("PRIVMSG "+canal) != -1)):
+      if ((ircmsg.find("PRIVMSG") != -1) != 1):
             respuesta_ping(ircmsg,canal)
       
       if ircmsg.find("palabra clave") != -1:

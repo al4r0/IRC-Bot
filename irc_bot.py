@@ -59,8 +59,7 @@ while 1:
       ircmsg = irc.recv(512)
       ircmsg = ircmsg.strip('\n\r')
       
-      if ircmsg.find("PRIVMSG "+canal) != -1:
-            print(mostrar_chat(ircmsg, canal))
+      mostrar_chat(ircmsg, canal)
             
       if ((ircmsg.find("PRIVMSG") != -1) != 1):
             respuesta_ping(ircmsg,canal)

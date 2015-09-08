@@ -10,7 +10,7 @@ puerto = 6667
 def respuesta_ping(ircmsg, canal):
       if ircmsg.find("PING :") != -1:
             respuesta_ping = ircmsg
-            respuesta_ping[1] = respuesta_ping.replace("I", "O")
+            respuesta_ping = respuesta_ping.replace("I", "O")
             respuesta_ping = respuesta_ping+"\n\r"
             irc.send(respuesta_ping)
             unirse_a_canal(canal)

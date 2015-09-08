@@ -20,8 +20,7 @@ def respuesta_ping(ircmsg, canal):
       if ircmsg.find("PING :") != -1:
             respuesta_ping = ircmsg
             respuesta_ping = entre(respuesta_ping, "PING :","\r\n:")
-            respuesta_ping = "PONG :"+respuesta_ping
-            print (respuesta_ping)
+            respuesta_ping = "PONG :"+respuesta_ping+"\r\n"
             irc.send(respuesta_ping)
             unirse_a_canal(canal)
         

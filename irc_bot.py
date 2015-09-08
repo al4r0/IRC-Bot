@@ -7,11 +7,21 @@ canal = "#canal"
 nombre = "v4charbot"
 puerto = 6667
 
+def entre(texto, inicio, final):
+      pos_a = texto.find(inicio)
+      if pos_a == -1: return ""
+      pos_b = texto.rfind(final,1)
+      if pos_b == -1: return ""
+      pos_a = pos_a + len(inicio)
+      if pos_a >= pos_b: return ""
+      return value[adjusted_pos_a:pos_b]
+
 def respuesta_ping(ircmsg, canal):
       if ircmsg.find("PING :") != -1:
             respuesta_ping = ircmsg
-            respuesta_ping = respuesta_ping.replace("I", "O")
-            respuesta_ping = respuesta_ping+"\n\r"
+            respuesta_ping = entre(respuesta_ping, "PING :","\r\n:")
+            respuesta_ping = "PONG :"+respuesta_ping
+            print (respuesta_ping)
             irc.send(respuesta_ping)
             unirse_a_canal(canal)
         

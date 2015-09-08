@@ -62,7 +62,8 @@ while 1:
       if ircmsg.find("PRIVMSG "+canal) != -1:
             mostrar_chat(ircmsg, canal)
             
-      respuesta_ping(ircmsg,canal)
+      if (!(ircmsg.find("PRIVMSG "+canal) != -1)):
+            respuesta_ping(ircmsg,canal)
       
       if ircmsg.find("palabra clave") != -1:
             enviar_mensaje(canal, "No digas la palabra clave")

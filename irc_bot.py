@@ -14,7 +14,7 @@ def entre(texto, inicio, final):
       if pos_b == -1: return ""
       pos_a = pos_a + len(inicio)
       if pos_a >= pos_b: return ""
-      return value[adjusted_pos_a:pos_b]
+      return value[pos_a:pos_b]
 
 def respuesta_ping(ircmsg, canal):
       if ircmsg.find("PING :") != -1:

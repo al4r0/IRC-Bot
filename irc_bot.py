@@ -2,8 +2,8 @@
 import socket
 import time
 
-servidor = "servidor_irc"
-canal = "#canal"
+servidor = "irc.ircnode.com"
+canal = "#bottest"
 nombre = "v4charbot"
 puerto = 6667
 

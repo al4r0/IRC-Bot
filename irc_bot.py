@@ -31,14 +31,14 @@ def unirse_a_canal(canal):
       irc.send("JOIN "+ canal +"\n\r")
 
 def  obtener_nick(canal, ircmsg):
-      if ircmsg.find("PRIVMSG "+canal) != -1:
+      if ircmsg.find("PRIVMSG ") != -1:
             nick = ircmsg.split('!', 1 )
             nick = nick[0].replace(":", "",1)
             print nick
             return nick
 
 def obtener_mensaje(canal, ircmsg):
-      if ircmsg.find("PRIVMSG "+canal) != -1:
+      if ircmsg.find("PRIVMSG ") != -1:
             mensaje = ircmsg.split(canal+' ', 1 )
             mensaje = mensaje[1].replace(":", "",1)
             print mensaje
